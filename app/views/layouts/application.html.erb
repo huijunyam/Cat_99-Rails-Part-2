@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NinetyNineCatsDay1</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <p>
+      <% unless current_user.nil?  %>
+        What's up, <%= current_user.username %>
+      <% end %>
+
+    <% if current_user.nil?  %>
+      <%= button_to "Log In", new_session_url, method: :get %>
+    <% else  %>
+      <%= button_to "Log Out", session_url, method: :delete %>
+    <% end  %>
+  </p>
+  </header>
+
+<%= yield %>
+
+</body>
+</html>
+<!DOCTYPE html>
